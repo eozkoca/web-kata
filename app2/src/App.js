@@ -8,6 +8,10 @@ const addProductToState = (name, description) => (prevState, props) => ({
   products: [{name: name, description: description} ,...prevState.products  ]
 })
 
+const removeProductToState = (index) => (prevState, props) => ({
+  products: [...prevState.products.splice(0, index), ...prevState.products.splice(1) ]
+})
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +27,7 @@ class App extends Component {
     this.setState(addProductToState(name, description));
     event.preventDefault();
   }
+
   render() {
     return <div className="App">
       <div className="App-header">
