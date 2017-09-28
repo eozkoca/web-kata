@@ -29,6 +29,10 @@ class App extends Component {
   }
 
   render() {
+    const deleteAt = (i) => {
+      this.setState(removeProductToState(i))
+    } 
+    
     return <div className="App">
       <div className="App-header">
         <h2>Kata 2- Add and remove objects</h2>
@@ -44,7 +48,7 @@ class App extends Component {
         </form>
       </div>
       <div className='products-container'>
-        <Products products={this.state.products} />
+        <Products products={this.state.products} deleteAt={deleteAt} />
       </div>
     </div>
   }

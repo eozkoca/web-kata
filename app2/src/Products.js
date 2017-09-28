@@ -3,13 +3,14 @@ import './Products.css'
 
 class Product extends Component{
     render(){
+        const {deleteMe, product} = this.props;
         return <div className='product'>
             <div className='details'>
-                <div className='name'>{this.props.product.name}</div>
-                <div className='desc'>{this.props.product.description}</div>
+                <div className='name'>{product.name}</div>
+                <div className='desc'>{product.description}</div>
             </div>
             <div className='actions'>
-                <div className='remove' title='fix me'>x</div>
+                <div className='remove' title='fix me' onClick= {deleteMe}>x</div>
             </div>
         </div>
     }
@@ -17,10 +18,13 @@ class Product extends Component{
 
 class Products extends Component{
     render(){
+        const {deleteAt, products} = this.props
         return <div className='products'>
-            {this.props.products.map(
-                (p, i) => 
-                <Product product={p} key={'product-' + i }/>
+            {products.map(
+                (p, i) => {
+                const deleteMe = () => deleteAt(i);
+                return <Product product={p} key={'product-' + i } deleteMe={deleteMe}/>
+                }
             )}
         </div>
     }
