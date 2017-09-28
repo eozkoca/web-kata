@@ -17,7 +17,16 @@ class App extends Component {
       <div className="App-header">
         <h2>Kata 2- Add and remove objects</h2>
       </div>
-      <div className='add-product'>View to add product here...</div>
+      <div className='add-product'>
+        <form>
+          <p>Product Name</p>
+          <input type="text" name="productName" />
+          <p>Description</p>
+          <input type="text" name="description" />
+
+          <button type="submit">Add Product</button>
+        </form>
+      </div>
       <div className='products-container'>
         <Products products={this.state.products} />
       </div>
