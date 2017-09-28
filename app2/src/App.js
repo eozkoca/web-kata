@@ -8,9 +8,10 @@ const addProductToState = (name, description) => (prevState, props) => ({
   products: [{name: name, description: description} ,...prevState.products  ]
 })
 
-const removeProductToState = (index) => (prevState, props) => ({
-  products: [...prevState.products.splice(0, index), ...prevState.products.splice(1) ]
-})
+const removeProductToState = (index) => (prevState, props) => {
+  const newProducts = [...prevState.products];
+  newProducts.splice(index, 1);
+  return {products: newProducts}}
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class App extends Component {
     const deleteAt = (i) => {
       this.setState(removeProductToState(i))
     } 
-    
+
     return <div className="App">
       <div className="App-header">
         <h2>Kata 2- Add and remove objects</h2>
